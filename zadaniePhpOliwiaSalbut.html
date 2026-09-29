@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadania funkjce PHP Oliwia Sałbut</title>
+</head>
+
+<body>
+
+<h1>Zadania PHP</h1>
+
+
+<h2>SUMA</h2>
+<p>
+    Obliczy i wyświetli na ekran sumę 2 liczb całkowitych
+    podanych przez użytkownika.
+</p>
+
+<input type="number" id="suma1">
+<input type="number" id="suma2">
+<button onclick="suma()">Oblicz</button>
+<p id="wynikSuma"></p>
+
+
+<h2>PODSTAWY</h2>
+<p>
+    Obliczy różnicę, iloczyn i iloraz 2 liczb podanych
+    przez użytkownika.
+</p>
+
+<input type="number" id="podstawy1">
+<input type="number" id="podstawy2">
+<button onclick="podstawy()">Oblicz</button>
+<p id="wynikPodstawy"></p>
+
+
+<h2>KALKULATOR</h2>
+<p>
+    Obliczy wybrane przez użytkownika działanie
+    (suma, różnica, iloczyn lub iloraz) z dwóch podanych
+    przez użytkownika liczb. Wynik działania umieści
+    w kontenerze o id wynik.
+</p>
+
+<input type="number" id="kalk1">
+<input type="number" id="kalk2">
+
+<select id="dzialanie">
+    <option value="suma">Suma</option>
+    <option value="roznica">Różnica</option>
+    <option value="iloczyn">Iloczyn</option>
+    <option value="iloraz">Iloraz</option>
+</select>
+
+<button onclick="kalkulator()">Oblicz</button>
+
+<div id="wynik"></div>
+
+
+<h2>MAKS</h2>
+<p>
+    Wypisze na ekran wartość największej spośród
+    3 liczb podanych przez użytkownika.
+</p>
+
+<input type="number" id="maks1">
+<input type="number" id="maks2">
+<input type="number" id="maks3">
+
+<button onclick="maks()">Sprawdź</button>
+<p id="wynikMaks"></p>
+
+
+<h2>WZROST</h2>
+<p>
+    Wczyta od użytkownika wzrost, następnie wypisze na ekran
+    komunikat klasyfikujący wzrost do jednej z trzech kategorii:
+    &lt; 150 cm niski, &gt; 180 cm wysoki lub w pozostałych
+    przypadkach średni.
+</p>
+
+<input type="number" id="wzrost">
+
+<button onclick="sprawdzWzrost()">Sprawdź</button>
+<p id="wynikWzrost"></p>
+
+
+<h2>BMI</h2>
+<p>
+    Wczyta od użytkownika wartość wzrostu (cm) oraz wagi (kg),
+    następnie obliczy wartość BMI (kg/m²).
+</p>
+
+<p>
+    BMI &lt; 18,5: za mało!<br>
+    BMI &gt; 25: za dużo!<br>
+    pomiędzy: OK!
+</p>
+
+<input type="number" id="bmiWzrost" placeholder="Wzrost (cm)">
+<input type="number" id="bmiWaga" placeholder="Waga (kg)">
+
+<button onclick="bmi()">Oblicz</button>
+<p id="wynikBmi"></p>
+
+
+<h2>STARSZY</h2>
+<p>
+    Wczyta z 2 pól tekstowych daty urodzenia dwóch osób,
+    następnie wypisze komunikat z informacją,
+    która z tych osób jest starsza.
+</p>
+
+<input type="date" id="data1">
+<input type="date" id="data2">
+
+<button onclick="starszy()">Sprawdź</button>
+<p id="wynikStarszy"></p>
+
+
+<h2>PRZESTĘPNY</h2>
+<p>
+    Program wczyta jako parametr wejściowy funkcji rok.
+    Wypisze informację, czy dany rok jest przestępny, czy nie.
+</p>
+
+<input type="number" id="rok">
+
+<button onclick="przestepny()">Sprawdź</button>
+<p id="wynikPrzestepny"></p>
+
+
+<h2>SIŁA</h2>
+<p>
+    Wczyta hasło podane przez użytkownika, następnie wypisze
+    informację o jego sile:
+</p>
+
+<ul>
+    <li>do 4 znaków – hasło słabe</li>
+    <li>do 8 znaków – hasło średnie</li>
+    <li>8 lub więcej znaków – hasło mocne</li>
+    <li>brak cyfry – hasło słabe</li>
+    <li>brak dużej litery – hasło słabe</li>
+    <li>brak małej litery – hasło słabe</li>
+    <li>brak znaku specjalnego – hasło słabe</li>
+</ul>
+
+<input type="password" id="haslo">
+
+<button onclick="silaHasla()">Sprawdź</button>
+<p id="wynikSila"></p>
+
+
+<h2>TROJKAT</h2>
+<p>
+    Wczyta od użytkownika 3 liczby całkowite, następnie wypisze,
+    czy jeśli przyjąć, że są to długości boków,
+    czy dałoby się utworzyć z nich trójkąt.
+</p>
+
+<input type="number" id="bok1">
+<input type="number" id="bok2">
+<input type="number" id="bok3">
+
+<button onclick="trojkat()">Sprawdź</button>
+<p id="wynikTrojkat"></p>
+
+
+<h2>SZYFR</h2>
+<p>
+    Program wczytuje litery w momencie każdorazowego
+    naciśnięcia klawisza tekst z pola tekstowego,
+    następnie szyfruje je i wypisuje po prawej stronie
+    pola tekstowego na ekran. <br>
+
+    Szyfrowanie odbywa się przez przesunięcie litery o 2
+    względem alfabetu, z zapętleniem. <br>
+
+    Przykład: a → c, k → m, z → b
+</p>
+
+<input type="text" id="tekstSzyfr">
+
+<span id="szyfrWynik"></span>
+
+
+<script>
+
+function suma() {
+    let a = Number(document.getElementById("suma1").value);
+    let b = Number(document.getElementById("suma2").value);
+
+    document.getElementById("wynikSuma").innerHTML = a + b;
+}
+
+
+function podstawy() {
+    let a = Number(document.getElementById("podstawy1").value);
+    let b = Number(document.getElementById("podstawy2").value);
+
+    document.getElementById("wynikPodstawy").innerHTML =
+        "Różnica: " + (a - b) + "<br>" +
+        "Iloczyn: " + (a * b) + "<br>" +
+        "Iloraz: " + (b != 0 ? a / b : "Nie można dzielić przez 0");
+}
+
+
+function kalkulator() {
+    let a = Number(document.getElementById("kalk1").value);
+    let b = Number(document.getElementById("kalk2").value);
+
+    let dzialanie = document.getElementById("dzialanie").value;
+    let wynik;
+
+    if (dzialanie == "suma") {
+        wynik = a + b;
+    }
+    else if (dzialanie == "roznica") {
+        wynik = a - b;
+    }
+    else if (dzialanie == "iloczyn") {
+        wynik = a * b;
+    }
+    else {
+        if (b == 0) {
+            wynik = "Nie można dzielić przez 0";
+        }
+        else {
+            wynik = a / b;
+        }
+    }
+
+    document.getElementById("wynik").innerHTML = wynik;
+}
+
+
+function maks() {
+    let a = Number(document.getElementById("maks1").value);
+    let b = Number(document.getElementById("maks2").value);
+    let c = Number(document.getElementById("maks3").value);
+
+    document.getElementById("wynikMaks").innerHTML =
+        Math.max(a, b, c);
+}
+
+
+function sprawdzWzrost() {
+    let wzrost = Number(document.getElementById("wzrost").value);
+
+    if (wzrost < 150) {
+        document.getElementById("wynikWzrost").innerHTML = "Niski";
+    }
+    else if (wzrost > 180) {
+        document.getElementById("wynikWzrost").innerHTML = "Wysoki";
+    }
+    else {
+        document.getElementById("wynikWzrost").innerHTML = "Średni";
+    }
+}
+
+
+function bmi() {
+    let wzrost = Number(document.getElementById("bmiWzrost").value);
+    let waga = Number(document.getElementById("bmiWaga").value);
+
+    let wynik = waga / ((wzrost / 100) * (wzrost / 100));
+
+    if (wynik < 18.5) {
+        document.getElementById("wynikBmi").innerHTML =
+            wynik.toFixed(2) + " - za mało!";
+    }
+    else if (wynik > 25) {
+        document.getElementById("wynikBmi").innerHTML =
+            wynik.toFixed(2) + " - za dużo!";
+    }
+    else {
+        document.getElementById("wynikBmi").innerHTML =
+            wynik.toFixed(2) + " - OK!";
+    }
+}
+
+
+function starszy() {
+    let data1 = new Date(document.getElementById("data1").value);
+    let data2 = new Date(document.getElementById("data2").value);
+
+    if (data1 < data2) {
+        document.getElementById("wynikStarszy").innerHTML =
+            "Osoba 1 jest starsza.";
+    }
+    else if (data2 < data1) {
+        document.getElementById("wynikStarszy").innerHTML =
+            "Osoba 2 jest starsza.";
+    }
+    else {
+        document.getElementById("wynikStarszy").innerHTML =
+            "Osoby są w tym samym wieku.";
+    }
+}
+
+
+function przestepny() {
+    let rok = Number(document.getElementById("rok").value);
+
+    if ((rok % 4 == 0 && rok % 100 != 0) || rok % 400 == 0) {
+        document.getElementById("wynikPrzestepny").innerHTML =
+            "Rok jest przestępny.";
+    }
+    else {
+        document.getElementById("wynikPrzestepny").innerHTML =
+            "Rok nie jest przestępny.";
+    }
+}
+
+
+function silaHasla() {
+    let haslo = document.getElementById("haslo").value;
+
+    let dlugosc = haslo.length;
+
+    let cyfra = /[0-9]/.test(haslo);
+    let duza = /[A-Z]/.test(haslo);
+    let mala = /[a-z]/.test(haslo);
+    let specjalny = /[^A-Za-z0-9]/.test(haslo);
+
+    let wynik;
+
+    if (dlugosc <= 4) {
+        wynik = "Hasło słabe";
+    }
+    else if (dlugosc < 8) {
+        wynik = "Hasło średnie";
+    }
+    else {
+        wynik = "Hasło mocne";
+    }
+
+    if (!cyfra || !duza || !mala || !specjalny) {
+        wynik = "Hasło słabe";
+    }
+
+    document.getElementById("wynikSila").innerHTML = wynik;
+}
+
+
+function trojkat() {
+    let a = Number(document.getElementById("bok1").value);
+    let b = Number(document.getElementById("bok2").value);
+    let c = Number(document.getElementById("bok3").value);
+
+    if (a + b > c && a + c > b && b + c > a) {
+        document.getElementById("wynikTrojkat").innerHTML =
+            "Można utworzyć trójkąt.";
+    }
+    else {
+        document.getElementById("wynikTrojkat").innerHTML =
+            "Nie można utworzyć trójkąta.";
+    }
+}
+
+
+document.getElementById("tekstSzyfr").addEventListener("input", function() {
+
+    let tekst = this.value;
+    let wynik = "";
+
+    for (let i = 0; i < tekst.length; i++) {
+
+        let znak = tekst[i];
+
+        if (znak >= "a" && znak <= "z") {
+
+            let kod = znak.charCodeAt(0);
+            kod = ((kod - 97 + 2) % 26) + 97;
+
+            wynik += String.fromCharCode(kod);
+        }
+        else if (znak >= "A" && znak <= "Z") {
+
+            let kod = znak.charCodeAt(0);
+            kod = ((kod - 65 + 2) % 26) + 65;
+
+            wynik += String.fromCharCode(kod);
+        }
+        else {
+            wynik += znak;
+        }
+    }
+
+    document.getElementById("szyfrWynik").innerHTML = wynik;
+
+});
+
+</script>
+
+</body>
+</html>
